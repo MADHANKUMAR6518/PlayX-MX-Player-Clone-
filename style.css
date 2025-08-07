@@ -1,0 +1,273 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #222;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Upload Section */
+.upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.upload-box {
+    background: rgba(30, 30, 30, 0.8);
+    border: 2px dashed #555;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    transition: all 0.3s;
+}
+
+.upload-box:hover {
+    border-color: #ff0000;
+    background: rgba(40, 40, 40, 0.9);
+}
+
+.upload-icon {
+    font-size: 60px;
+    color: #ff0000;
+    margin-bottom: 20px;
+}
+
+.upload-box h2 {
+    margin-bottom: 10px;
+}
+
+.upload-box p {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.upload-btn {
+    background: #ff0000;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.upload-btn:hover {
+    background: #cc0000;
+}
+
+#video-upload {
+    display: none;
+}
+
+/* Video Player Styles */
+.video-player-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background: #000;
+}
+
+.video {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+.controls-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    padding: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.video-player-container:hover .controls-container,
+.video-player-container:focus-within .controls-container {
+    transform: translateY(0);
+}
+
+.progress-container {
+    width: 100%;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #ff0000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.time-display {
+    color: white;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.main-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.control-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.control-btn:hover {
+    color: #ff0000;
+}
+
+.left-controls, .right-controls {
+    display: flex;
+    align-items: center;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.volume-slider {
+    width: 70px;
+    height: 5px;
+    margin-left: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #ff0000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.speed-select {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 5px;
+    margin-right: 10px;
+    outline: none;
+}
+
+/* Skip Indicators */
+.skip-indicator {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.skip-indicator span {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.left-skip {
+    left: 20px;
+}
+
+.right-skip {
+    right: 20px;
+}
+
+/* Fullscreen styles */
+.video-player-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    z-index: 1000;
+    border-radius: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .upload-box {
+        padding: 20px;
+    }
+    
+    .volume-slider {
+        width: 50px;
+    }
+    
+    .speed-select {
+        padding: 3px;
+        font-size: 12px;
+    }
+    
+    .skip-indicator {
+        padding: 15px;
+        font-size: 18px;
+    }
+}
